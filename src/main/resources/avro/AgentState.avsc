@@ -1,0 +1,18 @@
+{
+  "type" : "record",
+  "namespace": "com.poc.kafka.avro",
+  "name": "AgentState",
+  "fields": [
+    {
+      "name": "agentId",
+      "type" : "string",
+      "doc": "Agent id"
+    },
+    {
+      "name": "state",
+      "type" : ["null","string"],
+      "doc": "Agent state",
+      "default" : null
+    }
+  ]
+}
