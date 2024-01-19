@@ -7,15 +7,26 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
 
+/**
+ * Configures the components for all raw Kafka based tests
+ */
 @Configuration
 public class RawKafkaConfiguration
 {
 
+    /**
+     * Initializes a string based KafkaProducer
+     *
+     * @param configProperties - configuration parameters
+     * @return KafkaProducer
+     */
+    @ConditionalOnProperty(value =  "usecase.raw-enabled", havingValue = "true", matchIfMissing = true)
     @Bean(destroyMethod = "close")
     public KafkaProducer<String, String> createStringProducer(KafkaConfigProperties configProperties){
         Map<String, Object> config =
@@ -27,6 +38,13 @@ public class RawKafkaConfiguration
         return new KafkaProducer<>(config);
     }
 
+    /**
+     * Initializes a string based KafkaConsumer
+     *
+     * @param configProperties - configurations
+     * @return KafkaConsumer
+     */
+    @ConditionalOnProperty(value =  "usecase.raw-enabled", havingValue = "true", matchIfMissing = true)
     @Bean(destroyMethod = "close")
     public KafkaConsumer<String, String> createStringConsumer(KafkaConfigProperties configProperties){
         Map<String, Object> config =

@@ -11,6 +11,10 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+/**
+ * Component that sends custom Avro  Kafka messages based on scheduler. Sender uses Spring's {@link KafkaTemplate}.
+ * Sender also uses custom serializer that doesn't use schema repository.
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Service

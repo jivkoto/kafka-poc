@@ -15,11 +15,25 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Utility class for serializing and deserializing single avro object.
+ */
 @Slf4j
 public class AvroUtil
 {
+    private AvroUtil(){}
+
+
+    /**
+     * Serializes single avro object to byte array.
+     *
+     * @param data - avro object
+     * @param schema - avro schema
+     * @return byte array of serialized object
+     * @param <T> avro type
+     */
     public static <T extends SpecificRecord> byte[] serializeAvro(T data, Schema schema){
-        byte[] bytes = null;
+        byte[] bytes;
         DatumWriter<T> writer = new SpecificDatumWriter<>(schema);
         ByteArrayOutputStream out = new ByteArrayOutputStream();
 
@@ -38,6 +52,14 @@ public class AvroUtil
         return bytes;
     }
 
+    /**
+     * Deserializes single object from avro byte array.
+     *
+     * @param in - input binary bytes
+     * @param schema - avro schema
+     * @return Avro object
+     * @param <T> type of the object
+     */
     public static <T extends SpecificRecord> T deserializeAvro(byte[] in, Schema schema){
         SpecificDatumReader<T> reader = new SpecificDatumReader<>(schema);
         try
@@ -52,6 +74,12 @@ public class AvroUtil
         }
     }
 
+    /**
+     * Fetches the schema from binary byte array
+     *
+     * @param bytes - bytes data
+     * @return Schema object
+     */
     public static Schema getSchemaFromBytes(byte[] bytes) {
         try
         {

@@ -5,6 +5,9 @@ import org.apache.avro.Schema;
 import org.apache.avro.specific.SpecificRecord;
 import org.apache.kafka.common.serialization.Deserializer;
 
+/**
+ * Avro deserializer that doesn't use schema registry
+ */
 public class AvroDeserializer implements Deserializer<SpecificRecord>
 {
     @Override

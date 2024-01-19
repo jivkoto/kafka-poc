@@ -10,6 +10,9 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+/**
+ * Component that gets called regularly messages based on scheduler. Uses raw Kafka library
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Component

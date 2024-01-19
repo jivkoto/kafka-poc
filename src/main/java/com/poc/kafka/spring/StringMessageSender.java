@@ -8,11 +8,14 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
+/**
+ * Component that sends string Kafka messages based on scheduler. Sender uses Spring's {@link KafkaTemplate}
+ */
 @Slf4j
 @RequiredArgsConstructor
-@Service
+@Component
 @ConditionalOnProperty(value =  "usecase.spring-string-enabled", havingValue = "true", matchIfMissing = true)
 public class StringMessageSender
 {

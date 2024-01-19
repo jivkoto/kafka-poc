@@ -9,6 +9,10 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+/**
+ * Component that listens for Avro based massages using spring wrapping apis. Uses custom deserializer that doesn't use
+ * schema registry.
+ */
 @Slf4j
 @Component
 @ConditionalOnProperty(value =  "usecase.spring-avro-enabled", havingValue = "true", matchIfMissing = true)

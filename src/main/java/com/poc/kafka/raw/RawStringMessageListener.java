@@ -15,6 +15,9 @@ import org.springframework.stereotype.Component;
 import java.time.Duration;
 import java.util.List;
 
+/**
+ * Starting raw Kafka message string listener.
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Component
@@ -31,12 +34,14 @@ public class RawStringMessageListener
         Runtime.getRuntime().addShutdownHook(new Thread(this::shutdown));
     }
 
-//    @PreDestroy
     public void shutdown(){
         log.info("Shutting down the raw string listener");
         keepConsuming = false;
     }
 
+    /**
+     * Starts to listen when spring application context is started
+     */
     @EventListener(ContextStartedEvent.class)
     public void startListening(){
         log.info("Start raw listener");

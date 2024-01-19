@@ -9,6 +9,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
+/**
+ * Component that listens for String based messages using spring wrapping apis. Listener uses manual acknowledgment
+ */
 @Slf4j
 @Component
 @ConditionalOnProperty(value =  "usecase.spring-string-enabled", havingValue = "true", matchIfMissing = true)
