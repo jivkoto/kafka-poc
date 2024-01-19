@@ -12,7 +12,7 @@ Kafka Spring Boot
 -----
 Spring boot related Kafka code is in com.poc.kafka.spring
 
-There are several use cases tested with spring
+There are several use cases tested with spring. Each use case sends and receives messages (except load case)
 1. Produce and consume String based message. Code is located in StringMessage*. Code for this use case requires manual 
 acknowledge after receiving the message
 2. Produce and consume Avro based messages that use custom serializer and deserializer that doesn't rely on schema 
