@@ -23,7 +23,7 @@ public class RawStringMessageSender
     private final KafkaProducer<String, String> stringProducer;
     private final Faker faker = new Faker();
 
-    @Scheduled(fixedDelay = 60_000L)
+    @Scheduled(fixedDelay = 10_000L)
     public void sendToTopic() {
         String hardcodedKey = "RAW-LOTR";
         String message = faker.hobbit().quote();
